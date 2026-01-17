@@ -157,7 +157,7 @@ export default function Layout() {
       </aside>
 
       {/* Main content */}
-      <div className="lg:pl-64">
+      <div className="lg:pl-64 flex flex-col min-h-screen">
         {/* Top bar */}
         <header className="sticky top-0 z-30 bg-white border-b h-16 flex items-center px-4 lg:px-8">
           <button
@@ -170,9 +170,29 @@ export default function Layout() {
         </header>
 
         {/* Page content */}
-        <main className="p-4 lg:p-8">
+        <main className="p-4 lg:p-8 flex-1">
           <Outlet />
         </main>
+
+        {/* Footer */}
+        <footer className="py-4 px-4 lg:px-8 border-t bg-white text-center">
+          <p className="text-sm text-gray-500 flex items-center justify-center gap-1 flex-wrap">
+            <span>Made with</span>
+            <span className="text-red-500">❤</span>
+            <span>by</span>
+            <span className="inline-flex items-end">
+              {'JUMTC'.split('').map((letter, i) => (
+                <span
+                  key={i}
+                  className={`inline-block ${i % 2 === 0 ? 'translate-y-1' : '-translate-y-1'} font-semibold text-indigo-600`}
+                >
+                  {letter}
+                </span>
+              ))} Outcast
+            </span>
+            <span className="text-xs text-gray-400 ml-1">(Sorry Placement Coordination Issue)</span>
+          </p>
+        </footer>
       </div>
     </div>
   );

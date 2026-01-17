@@ -9,7 +9,7 @@ export default function RegisterPage() {
     username: '',
     email: '',
     password: '',
-    password2: '',
+    password_confirm: '',
     first_name: '',
     last_name: '',
   });
@@ -22,8 +22,8 @@ export default function RegisterPage() {
     e.preventDefault();
     setErrors({});
 
-    if (formData.password !== formData.password2) {
-      setErrors({ password2: 'Passwords do not match' });
+    if (formData.password !== formData.password_confirm) {
+      setErrors({ password_confirm: 'Passwords do not match' });
       return;
     }
 
@@ -116,10 +116,10 @@ export default function RegisterPage() {
               label="Confirm Password"
               type="password"
               required
-              value={formData.password2}
-              onChange={(e) => setFormData({ ...formData, password2: e.target.value })}
+              value={formData.password_confirm}
+              onChange={(e) => setFormData({ ...formData, password_confirm: e.target.value })}
               placeholder="••••••••"
-              error={errors.password2}
+              error={errors.password_confirm}
             />
 
             <Button type="submit" loading={loading} className="w-full">
@@ -136,6 +136,26 @@ export default function RegisterPage() {
             </p>
           </div>
         </Card>
+
+        {/* Footer */}
+        <div className="mt-8 text-center">
+          <p className="text-sm text-gray-500 flex items-center justify-center gap-1 flex-wrap">
+            <span>Made with</span>
+            <span className="text-red-500">❤</span>
+            <span>by</span>
+            <span className="inline-flex items-end">
+              {'JUMTC'.split('').map((letter, i) => (
+                <span
+                  key={i}
+                  className={`inline-block ${i % 2 === 0 ? 'translate-y-1' : '-translate-y-1'} font-semibold text-indigo-600`}
+                >
+                  {letter}
+                </span>
+              ))} Outcast
+            </span>
+            <span className="text-xs text-gray-400 ml-1">(Sorry Placement Coordination Issue)</span>
+          </p>
+        </div>
       </div>
     </div>
   );
